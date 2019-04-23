@@ -63,8 +63,8 @@ void loop() {
   
   if ((rDist < 25 && rDist >= 20) ||  
       (lDist < 25 && lDist >= 20) ||
-      (rDist < 20 && rDist >= 15) ||
-      (lFDist < 20 && rFDist >= 15)
+      (rFDist < 20 && rFDist >= 15) ||
+      (lFDist < 20 && lFDist >= 15)
       ){
     //analogWrite(led, 125);
     for (int i = 0; i < 19000; i++) {
@@ -77,7 +77,11 @@ void loop() {
     }
   }
 
-  else if (rDist < 20 && rDist >= 15) {
+  else if((rDist < 20 && rDist >= 15) ||  
+      (lDist < 20 && lDist >= 15) ||
+      (rFDist < 20 && rFDist >= 15) ||
+      (lFDist < 20 && lFDist >= 15)
+      ){ 
     //analogWrite(led, 125);
     for (int i = 0; i < 10000; i++) {
       digitalWrite(buzzer, HIGH);
@@ -89,8 +93,11 @@ void loop() {
     }
   }
 
-  else if (rDist < 15 && rDist >= 10) {
-    //analogWrite(led, 125);
+  if ((rDist < 15 && rDist >= 10) ||  
+      (lDist < 15 && lDist >= 10) ||
+      (rFDist < 15 && rFDist >= 10) ||
+      (lFDist < 15 && lFDist >= 10)
+      ){
     for (int i = 0; i < 5000; i++) {
       digitalWrite(buzzer, HIGH);
       analogWrite(led, 125);
@@ -101,7 +108,8 @@ void loop() {
     }
   }
 
-  else if (rDist < 10) {
+  else if (rDist < 10 || lDist < 10 ||
+          rFDist < 10 || lFDist <10) {
     digitalWrite(buzzer, HIGH);
     analogWrite(led, 125);
   }
